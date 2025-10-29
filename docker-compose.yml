@@ -1,0 +1,56 @@
+services:
+  ldap:
+    image: dcm4che/slapd-dcm4chee:2.6.8-34.0
+    container_name: ldap
+    ports:
+      - "389:389"
+    env_file: .env
+    environment:
+      STORAGE_DIR: /storage/fs1
+    volumes:
+      - ./data/ldap:/var/lib/openldap/openldap-data
+      - ./data/slapd.d:/etc/openldap/slapd.d
+    restart: unless-stopped
+
+  db:
+    image: dcm4che/postgres-dcm4chee:17.4-34
+    container_name: db
+    ports:
+      - "5432:5432"
+    env_file: .env
+    environment:
+      POSTGRES_DB: ${POSTGRES_DB:-pacsdb}
+      POSTGRES_USER: ${POSTGRES_USER:-pacs}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-pacs}
+    volumes:
+      - ./data/db:/var/lib/postgresql/data
+    restart: unless-stopped
+
+  arc:
+    image: dcm4che/dcm4chee-arc-psql:5.34.0
+    container_name: arc
+    ports:
+      - "8080:8080"
+      - "8443:8443"
+      - "9990:9990"
+      - "9993:9993"
+      - "11112:11112"
+      - "2762:2762"
+      - "2575:2575"
+      - "12575:12575"
+    env_file: .env
+    environment:
+      POSTGRES_DB: ${POSTGRES_DB:-pacsdb}
+      POSTGRES_USER: ${POSTGRES_USER:-pacs}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-pacs}
+      WILDFLY_WAIT_FOR: "ldap:389 db:5432"
+      JAVA_OPTS: ${JAVA_OPTS:--Xms64m -Xmx512m -XX:MetaspaceSize=96M -XX:MaxMetaspaceSize=256m}
+      ARCHIVE_DEVICE_NAME: ${ARCHIVE_DEVICE_NAME:-dcm4chee-arc}
+      ARCHIVE_AET: ${ARCHIVE_AET:-DCM4CHEE}
+    depends_on:
+      - ldap
+      - db
+    volumes:
+      - ./data/wildfly:/opt/wildfly/standalone
+      - ./data/storage:/storage
+    restart: unless-stopped
