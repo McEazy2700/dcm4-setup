@@ -47,7 +47,7 @@ services:
       - LDAP_BASE_DN=dc=dcm4che,dc=org
 
   ohif:
-    image: ohif/viewer:v3.8
+    image: ohif/viewer:4.12
     container_name: ohif
     depends_on:
       - arc
