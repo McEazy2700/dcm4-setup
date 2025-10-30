@@ -56,7 +56,7 @@ services:
     restart: unless-stopped
 
   ohif:
-    image: ohif/viewer:4.12
+    image: ohif/viewer:latest
     container_name: ohif
     depends_on:
       - arc
