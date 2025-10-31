@@ -25,7 +25,7 @@ cat > ohif-config/default.json << 'EOF'
 EOF
 
 echo "🚀 Starting services..."
-docker compose up -d
+docker compose up --build -d
 
 echo "✅ Done!"
 echo "DCM4CHEE UI: http://localhost:8080/dcm4chee-arc/ui2/"
