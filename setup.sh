@@ -12,9 +12,9 @@ cat > ohif-config/default.json << 'EOF'
     "dicomWeb": [
       {
         "name": "DCM4CHEE",
-        "qidoRoot": "http://localhost:8080/dcm4chee-arc/aets/DCM4CHEE/rs",
-        "wadoRoot": "http://localhost:8080/dcm4chee-arc/aets/DCM4CHEE/rs",
-        "wadoUriRoot": "http://localhost:8080/dcm4chee-arc/aets/DCM4CHEE/wado",
+        "qidoRoot": "http://192.168.1.176:8080/dcm4chee-arc/rs",
+        "wadoRoot": "http://192.168.1.176:8080/dcm4chee-arc/rs",
+        "wadoUriRoot": "http://192.168.1.176:8080/dcm4chee-arc/wado",
         "qidoSupportsIncludeField": true,
         "imageRendering": "wadors",
         "thumbnailRendering": "wadors"
