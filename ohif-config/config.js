@@ -7,9 +7,9 @@ window.config = {
   userAuthentication: {
     type: "oidc",
     oidc: {
-      authority: "https://192.168.1.176:8843/realms/dcm4chee",
+      authority: "https://137.184.35.91:8843/realms/dcm4chee",
       client_id: "ohif",
-      redirect_uri: "http://192.168.1.176:3000/callback",
+      redirect_uri: "http://137.184.35.91:3000/callback",
       response_type: "code",
       scope: "openid profile email dcm4chee-arc.user",
       extraQueryParams: {
@@ -27,9 +27,9 @@ window.config = {
         name: "DCM4CHEE",
 
         wadoUriRoot:
-          "https://192.168.1.176:8443/dcm4chee-arc/aets/DCM4CHEE/wado",
-        qidoRoot: "https://192.168.1.176:8443/dcm4chee-arc/aets/DCM4CHEE/rs",
-        wadoRoot: "https://192.168.1.176:8443/dcm4chee-arc/aets/DCM4CHEE/rs",
+          "https://137.184.35.91:8443/dcm4chee-arc/aets/DCM4CHEE/wado",
+        qidoRoot: "https://137.184.35.91:8443/dcm4chee-arc/aets/DCM4CHEE/rs",
+        wadoRoot: "https://137.184.35.91:8443/dcm4chee-arc/aets/DCM4CHEE/rs",
 
         qidoSupportsIncludeField: false,
         supportsReject: true,
