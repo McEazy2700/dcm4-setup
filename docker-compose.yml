@@ -63,7 +63,7 @@ services:
       - arc
     ports:
       - "3000:80"
-    environment:
-      APP_CONFIG: ohif-config/config.js
-    # volumes:
-    #   - ./ohif-config/app-config.js:/usr/share/nginx/html/config.js
+    # environment:
+    #   APP_CONFIG: ohif-config/config.js
+    volumes:
+      - ./ohif-config/config.js:/usr/share/nginx/html/app-config.js:Z
