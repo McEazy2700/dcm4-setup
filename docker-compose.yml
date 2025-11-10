@@ -64,4 +64,4 @@ services:
     ports:
       - "3000:80"
     volumes:
-      - ./ohif-config/config.js:/usr/share/nginx/html/app-config.js:Z
+      - ./ohif-config/config.js:/usr/share/nginx/html/app-config.js
