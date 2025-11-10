@@ -1,7 +1,7 @@
 window.config = {
   routerBasename: "/",
   showStudyList: true,
-  extensions: [],
+  extensions: ["@ohif/extension-default", "@ohif/extension-cornerstone"],
 
   // This is the new v3 configuration object
   servers: {
