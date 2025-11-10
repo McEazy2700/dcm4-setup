@@ -41,13 +41,12 @@ services:
     env_file: .env
     environment:
       POSTGRES_DB: ${POSTGRES_DB:-pacsdb}
-      POSTGRES_USER: ${POSTGRES_USER:-postgres}
-      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-postgres}
+      POSTGRES_USER: ${POSTGRES_USER:-pacs}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-pacs}
       WILDFLY_WAIT_FOR: "ldap:389 db:5432"
       JAVA_OPTS: ${JAVA_OPTS:--Xms64m -Xmx512m -XX:MetaspaceSize=96M -XX:MaxMetaspaceSize=256m}
       ARCHIVE_DEVICE_NAME: ${ARCHIVE_DEVICE_NAME:-dcm4chee-arc}
       ARCHIVE_AET: ${ARCHIVE_AET:-DCM4CHEE}
-      STORAGE_DIR: /storage
     depends_on:
       - ldap
       - db
@@ -55,21 +54,16 @@ services:
       - ./data/wildfly:/opt/wildfly/standalone
       - ./data/storage:/storage
     restart: unless-stopped
-    healthcheck:
-      test:
-        ["CMD", "curl", "-f", "http://localhost:8080/dcm4chee-arc/ctrl/status"]
-      interval: 30s
-      timeout: 10s
-      retries: 5
 
   ohif:
     image: ohif/viewer:latest
     container_name: ohif
     restart: unless-stopped
     depends_on:
-      arc:
-        condition: service_healthy
+      - arc
     ports:
       - "3000:80"
+    environment:
+      - APP_CONFIG_URL=/config/default.json
     volumes:
-      - ./ohif-config/default.json:/usr/share/nginx/html/config/default.json
+      - ./ohif-config/:/usr/share/nginx/html/config/
