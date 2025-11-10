@@ -44,7 +44,7 @@ services:
       POSTGRES_USER: ${POSTGRES_USER:-pacs}
       POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-pacs}
       WILDFLY_WAIT_FOR: "ldap:389 db:5432"
-      JAVA_OPTS: ${JAVA_OPTS:--Xms64m -Xmx512m -XX:MetaspaceSize=96M -XX:MaxMetaspaceSize=256m}
+      JAVA_OPTS: ${JAVA_OPTS:--Xms64m -Xmx2g -XX:MetaspaceSize=96M -XX:MaxMetaspaceSize=512m}
       ARCHIVE_DEVICE_NAME: ${ARCHIVE_DEVICE_NAME:-dcm4chee-arc}
       ARCHIVE_AET: ${ARCHIVE_AET:-DCM4CHEE}
     depends_on:
