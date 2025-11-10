@@ -1,19 +1,37 @@
 window.config = {
   routerBasename: "/",
+  showStudyList: true,
   extensions: [],
   modes: [],
-  showStudyList: true,
+
+  userAuthentication: {
+    type: "oidc",
+    oidc: {
+      authority: "https://192.168.1.176:8843/realms/dcm4chee",
+      client_id: "ohif",
+      redirect_uri: "http://192.168.1.176:3000/callback",
+      response_type: "code",
+      scope: "openid profile email",
+      extraQueryParams: {
+        kc_idp_hint: "dcm4che",
+      },
+    },
+  },
+
   dataSources: [
     {
       namespace: "@ohif/extension-default.dataSourcesModule.dicomweb",
       sourceName: "dcm4chee",
       configuration: {
-        friendlyName: "DCM4CHEE",
+        friendlyName: "Secure DCM4CHEE",
         name: "DCM4CHEE",
+
+        // IMPORTANT: Use the SECURE HTTPS port (8443)
         wadoUriRoot:
-          "http://192.168.1.176:8080/dcm4chee-arc/aets/DCM4CHEE/wado",
-        qidoRoot: "http://192.168.1.176:8080/dcm4chee-arc/aets/DCM4CHEE/rs",
-        wadoRoot: "http://192.168.1.176:8080/dcm4chee-arc/aets/DCM4CHEE/rs",
+          "https://192.168.1.176:8443/dcm4chee-arc/aets/DCM4CHEE/wado",
+        qidoRoot: "https://192.168.1.176:8443/dcm4chee-arc/aets/DCM4CHEE/rs",
+        wadoRoot: "https://192.168.1.176:8443/dcm4chee-arc/aets/DCM4CHEE/rs",
+
         qidoSupportsIncludeField: false,
         supportsReject: true,
         imageRendering: "wadors",
@@ -23,9 +41,12 @@ window.config = {
         supportsWildcard: true,
         staticWado: true,
         singlepart: "bulkdata,video",
+        // This tells OHIF to send the login token with its requests
+        requestOptions: {
+          auth: "oauth",
+        },
       },
     },
   ],
-
   defaultDataSourceName: "dcm4chee",
 };
