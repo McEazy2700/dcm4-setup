@@ -51,8 +51,8 @@ services:
       - ldap
       - db
     volumes:
-      - ./data/wildfly:/opt/wildfly/standalone
-      - ./data/storage:/storage
+      - ./data/wildfly:/opt/wildfly/standalone:Z
+      - ./data/storage:/storage:Z
     restart: unless-stopped
 
   ohif:
