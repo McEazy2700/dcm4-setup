@@ -56,7 +56,7 @@ services:
     restart: unless-stopped
 
   ohif:
-    image: ohif/viewer:v2-stable
+    image: ohif/viewer:v2.11
     container_name: ohif
     restart: unless-stopped
     depends_on:
