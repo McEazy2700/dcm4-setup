@@ -1,12 +1,14 @@
 window.config = {
   routerBasename: "/",
-  showStudyList: true,
   extensions: [],
   modes: [],
-
-  servers: {
-    dicomWeb: [
-      {
+  showStudyList: true,
+  dataSources: [
+    {
+      namespace: "@ohif/extension-default.dataSourcesModule.dicomweb",
+      sourceName: "dcm4chee",
+      configuration: {
+        friendlyName: "DCM4CHEE",
         name: "DCM4CHEE",
         wadoUriRoot:
           "http://192.168.1.176:8080/dcm4chee-arc/aets/DCM4CHEE/wado",
@@ -22,9 +24,8 @@ window.config = {
         staticWado: true,
         singlepart: "bulkdata,video",
       },
-    ],
-  },
+    },
+  ],
 
-  // The "name" field above must match this
-  defaultDataSourceName: "DCM4CHEE",
+  defaultDataSourceName: "dcm4chee",
 };
