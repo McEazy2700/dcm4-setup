@@ -64,6 +64,6 @@ services:
     ports:
       - "3000:80"
     environment:
-      - APP_CONFIG_URL=/config/default.json
+      APP_CONFIG_URL: config/app-config.js
     volumes:
       - ./ohif-config/:/usr/share/nginx/html/config/

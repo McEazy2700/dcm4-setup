@@ -1,4 +1,4 @@
-{
+window.config = {
   "routerBasename": "/",
   "showStudyList": true,
   "maxNumberOfWebWorkers": 3,
@@ -33,4 +33,4 @@
     }
   ],
   "defaultDataSourceName": "dcm4chee"
-}
+};
