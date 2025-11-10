@@ -2,8 +2,8 @@ window.config = {
   routerBasename: "/",
   showStudyList: true,
   extensions: ["@ohif/extension-default", "@ohif/extension-cornerstone"],
+  modes: ["@ohif/mode-longitudinal"],
 
-  // This is the new v3 configuration object
   servers: {
     dicomWeb: [
       {
