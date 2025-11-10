@@ -1,6 +1,7 @@
 window.config = {
   routerBasename: "/",
   showStudyList: true,
+  extensions: [],
 
   // This is the new v3 configuration object
   servers: {
