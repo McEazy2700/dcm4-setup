@@ -1,22 +1,10 @@
 {
   "routerBasename": "/",
   "showStudyList": true,
-  "maxNumberOfWebWorkers": 3,
-  "showWarningMessageForCrossOrigin": false,
-  "strictZSpacingForVolumeViewport": true,
-  "groupEnabledModesFirst": true,
-  "maxNumRequests": {
-    "interaction": 100,
-    "thumbnail": 75,
-    "prefetch": 25
-  },
-  "dataSources": [
-    {
-      "namespace": "@ohif/extension-default.dataSourcesModule.dicomweb",
-      "sourceName": "dcm4chee",
-      "configuration": {
-        "friendlyName": "DCM4CHEE",
-        "name": "dcm4chee",
+  "servers": {
+    "dicomWeb": [
+      {
+        "name": "DCM4CHEE",
         "wadoUriRoot": "http://192.168.1.176:8080/dcm4chee-arc/aets/DCM4CHEE/wado",
         "qidoRoot": "http://192.168.1.176:8080/dcm4chee-arc/aets/DCM4CHEE/rs",
         "wadoRoot": "http://192.168.1.176:8080/dcm4chee-arc/aets/DCM4CHEE/rs",
@@ -30,7 +18,7 @@
         "staticWado": true,
         "singlepart": "bulkdata,video"
       }
-    }
-  ],
-  "defaultDataSourceName": "dcm4chee"
+    ]
+  },
+  "defaultDataSourceName": "DCM4CHEE"
 }

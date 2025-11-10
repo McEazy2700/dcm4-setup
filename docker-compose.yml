@@ -3,7 +3,7 @@ services:
     image: dcm4che/slapd-dcm4chee:2.6.8-34.0
     container_name: ldap
     ports:
-      - "389:389"
+      - "1389:389"
     env_file: .env
     environment:
       STORAGE_DIR: /storage/fs1
@@ -56,14 +56,12 @@ services:
     restart: unless-stopped
 
   ohif:
-    image: ohif/viewer:v2.11.8.7749
+    image: ohif/app:latest
     container_name: ohif
     restart: unless-stopped
     depends_on:
       - arc
     ports:
       - "3000:80"
-    environment:
-      APP_CONFIG_URL: /config/app-config.js
     volumes:
-      - ./ohif-config:/usr/share/nginx/html/config
+      - ./ohif-config/config.js:/usr/share/nginx/html/app-config.js:Z
