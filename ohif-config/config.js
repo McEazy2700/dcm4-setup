@@ -1,7 +1,11 @@
 window.config = {
   routerBasename: "/",
   showStudyList: true,
-  extensions: ["@ohif/extension-default", "@ohif/extension-cornerstone"],
+  extensions: [
+    "@ohif/extension-default",
+    "@ohif/extension-cornerstone",
+    "@ohif/mode-longitudinal",
+  ],
   modes: ["@ohif/mode-longitudinal"],
 
   servers: {
