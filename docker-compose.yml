@@ -25,7 +25,7 @@ services:
     env_file: docker-compose.env
     volumes:
       - /etc/localtime:/etc/localtime:ro
-      - /etc/timezone:/etc/timezone:ro
+      # - /etc/timezone:/etc/timezone:ro
       - ~/dcm4chee-arc/db:/var/lib/postgresql/data
 
   arc:
@@ -52,7 +52,7 @@ services:
       - db
     volumes:
       - /etc/localtime:/etc/localtime:ro
-      - /etc/timezone:/etc/timezone:ro
+      # - /etc/timezone:/etc/timezone:ro
       - ~/dcm4chee-arc/wildfly:/opt/wildfly/standalone
       - ~/dcm4chee-arc/storage:/storage
 
