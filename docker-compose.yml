@@ -29,7 +29,7 @@ services:
       - ~/dcm4chee-arc/db:/var/lib/postgresql/data
 
   arc:
-    image: dcm4che/dcm4chee-arc-psql:5.31.2
+    image: dcm4che/dcm4chee-arc-psql:5.29.0
     logging:
       driver: json-file
       options:
