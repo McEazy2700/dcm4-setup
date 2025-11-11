@@ -50,7 +50,6 @@ services:
     environment:
       WILDFLY_CHOWN: /opt/wildfly/standalone /storage
       WILDFLY_WAIT_FOR: ldap:389 db:5432
-      JAVA_TOOL_OPTIONS: "-Djdk.internal.platform.cgroup.enabled=false"
     depends_on:
       - ldap
       - db
@@ -58,10 +57,11 @@ services:
       - /etc/localtime:/etc/localtime:ro
       - ~/dcm4chee-arc/wildfly:/opt/wildfly/standalone
       - ~/dcm4chee-arc/storage:/storage
-      - /sys/fs/cgroup:/sys/fs/cgroup:ro
     networks:
       - default
-    privileged: true
+    security_opt:
+      - seccomp:unconfined
+    cgroup_parent: docker.slice
     healthcheck:
       test:
         [
