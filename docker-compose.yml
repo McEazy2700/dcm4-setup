@@ -74,7 +74,6 @@ services:
       - default
     extra_hosts:
       - "host.docker.internal:host-gateway"
-      - "slate-dcm4chee.chickenkiller.com:127.0.0.1"
     environment:
       - OAUTH2_PROXY_SKIP_PROVIDER_BUTTON=true
     volumes:
