@@ -29,7 +29,7 @@ services:
       - ~/dcm4chee-arc/db:/var/lib/postgresql/data
 
   arc:
-    image: dcm4che/dcm4chee-arc-psql:5.29.0
+    image: dcm4che/dcm4chee-arc-psql:5.31.2
     logging:
       driver: json-file
       options:
@@ -44,7 +44,6 @@ services:
       - "2575:2575"
       - "12575:12575"
     env_file: docker-compose.env
-    cgroup: host
     environment:
       WILDFLY_CHOWN: /opt/wildfly/standalone /storage
       WILDFLY_WAIT_FOR: ldap:389 db:5432
