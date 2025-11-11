@@ -37,6 +37,9 @@ services:
       driver: json-file
       options:
         max-size: "10m"
+    security_opt:
+      - seccomp:unconfined
+    cgroup: host
     ports:
       - "8080:8080"
       - "8443:8443"
