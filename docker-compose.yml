@@ -37,9 +37,6 @@ services:
       driver: json-file
       options:
         max-size: "10m"
-    security_opt:
-      - seccomp:unconfined
-    cgroup: host
     ports:
       - "8080:8080"
       - "8443:8443"
@@ -53,6 +50,7 @@ services:
     environment:
       WILDFLY_CHOWN: /opt/wildfly/standalone /storage
       WILDFLY_WAIT_FOR: ldap:389 db:5432
+      JAVA_OPTS_APPEND: "-Djdk.internal.platform.cgroup.enabled=false"
     depends_on:
       - ldap
       - db
