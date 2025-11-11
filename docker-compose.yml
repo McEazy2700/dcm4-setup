@@ -63,6 +63,8 @@ services:
     depends_on:
       keycloak:
         condition: service_healthy
+      arc:
+        condition: service_started
     restart: on-failure
     networks:
       - default
