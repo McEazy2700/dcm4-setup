@@ -40,15 +40,15 @@ window.config = {
       authority:
         "https://slate-dcm4chee.chickenkiller.com/keycloak/realms/ohif",
       client_id: "ohif_viewer",
-      redirect_uri:
-        "https://slate-dcm4chee.chickenkiller.com/ohif-viewer/callback",
+      redirect_uri: "https://slate-dcm4chee.chickenkiller.com/callback",
+      silent_redirect_uri:
+        "https://slate-dcm4chee.chickenkiller.com/ohif-viewer/silent-refresh.html",
       response_type: "code",
       scope: "openid profile email",
-      post_logout_redirect_uri:
-        "https://slate-dcm4chee.chickenkiller.com/ohif-viewer/",
+      post_logout_redirect_uri: "https://slate-dcm4chee.chickenkiller.com/",
       revoke_uri:
         "https://slate-dcm4chee.chickenkiller.com/keycloak/realms/ohif/protocol/openid-connect/revoke",
-      automaticSilentRenew: true,
+      automaticSilentRenew: false,
       revokeAccessTokenOnSignout: true,
     },
   ],
