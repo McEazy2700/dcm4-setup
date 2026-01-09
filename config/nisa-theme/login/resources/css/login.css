@@ -1,0 +1,204 @@
+/* --- Variables --- */
+:root {
+	--nisa-dark-blue: #1a4d7a;
+	--nisa-medium-blue: #4a90c8;
+	--nisa-light-blue: #7bbfde;
+	--nisa-sky-blue: #a8d5e8;
+	--glass-bg: rgba(255, 255, 255, 0.95);
+	--glass-border: rgba(255, 255, 255, 0.4);
+	--shadow-color: rgba(26, 77, 122, 0.2);
+}
+
+/* --- Main Background --- */
+body {
+	background: linear-gradient(
+		135deg,
+		#7bbfde 0%,
+		#4a90c8 50%,
+		#1a4d7a 100%
+	) !important;
+	font-family: "Segoe UI", Roboto, Helvetica, Arial, sans-serif !important;
+	min-height: 100vh;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	margin: 0;
+}
+
+/* Subtle texture overlay */
+body::before {
+	content: "";
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	background: radial-gradient(
+		circle at 50% 50%,
+		rgba(255, 255, 255, 0.1) 0%,
+		transparent 60%
+	);
+	pointer-events: none;
+	z-index: 0;
+}
+
+/* --- Container / Card --- */
+/* This targets the main wrapper of the login box */
+.login-pf-page .card-pf {
+	background: var(--glass-bg) !important;
+	border: 1px solid var(--glass-border) !important;
+	box-shadow: 0 8px 32px 0 var(--shadow-color) !important;
+	backdrop-filter: blur(12px);
+	-webkit-backdrop-filter: blur(12px);
+	border-radius: 16px !important;
+	padding: 40px !important;
+	max-width: 450px !important;
+	width: 100%;
+	margin: 0 auto;
+	position: relative;
+	z-index: 1;
+}
+
+/* Hide the default header text if we are using a logo */
+#kc-header {
+	margin-bottom: 20px;
+	text-align: center;
+}
+
+#kc-header-wrapper {
+	font-size: 24px;
+	font-weight: bold;
+	color: white;
+	text-transform: uppercase;
+	letter-spacing: 2px;
+	text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+/* --- Logo Setup --- */
+/* This inserts the logo above the form */
+.card-pf::before {
+	content: "";
+	display: block;
+	width: 180px;
+	height: 60px;
+	margin: 0 auto 20px auto;
+	background-image: url("../img/logo.png"); /* Ensure this file exists! */
+	background-size: contain;
+	background-repeat: no-repeat;
+	background-position: center;
+}
+
+/* --- Form Elements --- */
+
+/* Page Title (e.g., "Sign in to your account") */
+#kc-page-title {
+	text-align: center;
+	color: var(--nisa-dark-blue);
+	font-size: 1.5rem;
+	font-weight: 600;
+	margin-bottom: 30px;
+}
+
+/* Labels */
+.pf-c-form__label-text {
+	color: var(--nisa-dark-blue) !important;
+	font-weight: 600 !important;
+}
+
+/* Inputs */
+input.pf-c-form-control,
+#username,
+#password {
+	display: block;
+	width: 100%;
+	height: 45px;
+	padding: 10px 15px;
+	font-size: 15px;
+	line-height: 1.5;
+	color: #333;
+	background-color: #fff;
+	background-clip: padding-box;
+	border: 2px solid #e0e0e0 !important;
+	border-radius: 8px !important;
+	transition:
+		border-color 0.3s ease,
+		box-shadow 0.3s ease;
+	box-sizing: border-box; /* Crucial for width: 100% */
+}
+
+input.pf-c-form-control:focus,
+#username:focus,
+#password:focus {
+	border-color: var(--nisa-medium-blue) !important;
+	outline: 0;
+	box-shadow: 0 0 0 4px rgba(74, 144, 200, 0.15) !important;
+}
+
+/* --- Buttons --- */
+#kc-login,
+button.pf-c-button.pf-m-primary {
+	background: linear-gradient(
+		135deg,
+		var(--nisa-medium-blue) 0%,
+		var(--nisa-dark-blue) 100%
+	) !important;
+	border: none !important;
+	color: white !important;
+	padding: 12px 24px;
+	font-size: 16px;
+	font-weight: 600;
+	border-radius: 8px !important;
+	width: 100%;
+	margin-top: 20px;
+	cursor: pointer;
+	transition:
+		transform 0.2s,
+		box-shadow 0.2s;
+	text-transform: uppercase;
+	letter-spacing: 0.5px;
+}
+
+#kc-login:hover,
+button.pf-c-button.pf-m-primary:hover {
+	transform: translateY(-2px);
+	box-shadow: 0 6px 15px rgba(26, 77, 122, 0.3);
+}
+
+#kc-login:active {
+	transform: translateY(0);
+}
+
+/* --- Links (Forgot Password, etc) --- */
+a,
+#kc-registration a {
+	color: var(--nisa-medium-blue) !important;
+	text-decoration: none;
+	font-weight: 500;
+	transition: color 0.2s;
+}
+
+a:hover {
+	color: var(--nisa-dark-blue) !important;
+	text-decoration: underline;
+}
+
+/* --- Alerts / Feedback --- */
+.alert-error,
+.pf-c-alert.pf-m-danger {
+	background-color: #fde8e8 !important;
+	border-left: 4px solid #f02e2e !important;
+	color: #c01d1d !important;
+	border-radius: 6px;
+	padding: 10px;
+	margin-bottom: 15px;
+}
+
+.pf-c-alert__icon {
+	color: #c01d1d !important;
+}
+
+/* --- Footer cleanup --- */
+/* Hides standard Keycloak footer fluff if desired */
+footer {
+	display: none;
+}
