@@ -40,7 +40,8 @@ window.config = {
       authority:
         "https://slate-dcm4chee.chickenkiller.com/keycloak/realms/ohif",
       client_id: "ohif_viewer",
-      redirect_uri: "https://slate-dcm4chee.chickenkiller.com/callback",
+      redirect_uri:
+        "https://slate-dcm4chee.chickenkiller.com/ohif-viewer/callback",
       response_type: "code",
       scope: "openid profile email",
       post_logout_redirect_uri: "https://slate-dcm4chee.chickenkiller.com/",
