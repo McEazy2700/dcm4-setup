@@ -42,12 +42,11 @@ window.config = {
         "https://slate-dcm4chee.chickenkiller.com/ohif-viewer/callback",
       post_logout_redirect_uri:
         "https://slate-dcm4chee.chickenkiller.com/ohif-viewer/",
-
       response_type: "code",
-      scope: "openid profile email",
-
+      response_mode: "query",
+      checkLoginIframe: false,
+      loadUserInfo: true,
       automaticSilentRenew: false,
-
       revokeAccessTokenOnSignout: true,
       revoke_uri:
         "https://slate-dcm4chee.chickenkiller.com/keycloak/realms/ohif/protocol/openid-connect/revoke",
