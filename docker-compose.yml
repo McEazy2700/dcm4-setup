@@ -77,9 +77,8 @@ services:
     environment:
       - OAUTH2_PROXY_SKIP_PROVIDER_BUTTON=true
       - |
-        APP_CONFIG_CONTENT = window.config = {
+        APP_CONFIG_CONTENT=window.config = {
           routerBasename: "/ohif-viewer/",
-
           showStudyList: true,
           extensions: [],
           modes: [],
@@ -91,7 +90,6 @@ services:
           investigationalUseDialog: {
             option: "never",
           },
-
           dataSources: [
             {
               namespace: "@ohif/extension-default.dataSourcesModule.dicomweb",
