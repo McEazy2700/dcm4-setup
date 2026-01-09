@@ -81,6 +81,7 @@ services:
       - ./config/oauth2-proxy.cfg:/etc/oauth2-proxy/oauth2-proxy.cfg
       - ./config/letsencrypt:/etc/letsencrypt
       - ./config/certbot:/var/www/certbot
+      - ./config/app-config.js:/usr/share/nginx/html/app-config.js
 
   keycloak:
     image: quay.io/keycloak/keycloak:24.0.5
