@@ -44,7 +44,8 @@ window.config = {
         "https://slate-dcm4chee.chickenkiller.com/ohif-viewer/callback",
       response_type: "code",
       scope: "openid profile email",
-      post_logout_redirect_uri: "https://slate-dcm4chee.chickenkiller.com/",
+      post_logout_redirect_uri:
+        "https://slate-dcm4chee.chickenkiller.com/ohif-viewer/",
       revoke_uri:
         "https://slate-dcm4chee.chickenkiller.com/keycloak/realms/ohif/protocol/openid-connect/revoke",
       automaticSilentRenew: true,
