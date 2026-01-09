@@ -32,24 +32,24 @@ window.config = {
       },
     },
   ],
-
-  oidc: [
-    {
-      authority:
-        "https://slate-dcm4chee.chickenkiller.com/keycloak/realms/ohif",
-      client_id: "ohif_viewer",
-      redirect_uri:
-        "https://slate-dcm4chee.chickenkiller.com/ohif-viewer/callback",
-      post_logout_redirect_uri:
-        "https://slate-dcm4chee.chickenkiller.com/ohif-viewer/",
-      response_type: "code",
-      response_mode: "query",
-      checkLoginIframe: false,
-      loadUserInfo: true,
-      automaticSilentRenew: false,
-      revokeAccessTokenOnSignout: true,
-      revoke_uri:
-        "https://slate-dcm4chee.chickenkiller.com/keycloak/realms/ohif/protocol/openid-connect/revoke",
-    },
-  ],
+  //
+  // oidc: [
+  //   {
+  //     authority:
+  //       "https://slate-dcm4chee.chickenkiller.com/keycloak/realms/ohif",
+  //     client_id: "ohif_viewer",
+  //     redirect_uri:
+  //       "https://slate-dcm4chee.chickenkiller.com/ohif-viewer/callback",
+  //     post_logout_redirect_uri:
+  //       "https://slate-dcm4chee.chickenkiller.com/ohif-viewer/",
+  //     response_type: "code",
+  //     response_mode: "query",
+  //     checkLoginIframe: false,
+  //     loadUserInfo: true,
+  //     automaticSilentRenew: false,
+  //     revokeAccessTokenOnSignout: true,
+  //     revoke_uri:
+  //       "https://slate-dcm4chee.chickenkiller.com/keycloak/realms/ohif/protocol/openid-connect/revoke",
+  //   },
+  // ],
 };
