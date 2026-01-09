@@ -1,6 +1,6 @@
 /** @type {AppTypes.Config} */
 window.config = {
-  routerBasename: "/ohif-viewer/", // Keeping your preferred path
+  routerBasename: "/ohif-viewer/",
   showStudyList: true,
   extensions: [],
   modes: [],
@@ -42,12 +42,15 @@ window.config = {
         "https://slate-dcm4chee.chickenkiller.com/ohif-viewer/callback",
       post_logout_redirect_uri:
         "https://slate-dcm4chee.chickenkiller.com/ohif-viewer/",
+
       response_type: "code",
       scope: "openid profile email",
+
+      automaticSilentRenew: false,
+
+      revokeAccessTokenOnSignout: true,
       revoke_uri:
         "https://slate-dcm4chee.chickenkiller.com/keycloak/realms/ohif/protocol/openid-connect/revoke",
-      automaticSilentRenew: true,
-      revokeAccessTokenOnSignout: true,
     },
   ],
 };
