@@ -1,7 +1,6 @@
 /** @type {AppTypes.Config} */
 window.config = {
-  routerBasename: "/ohif-viewer/",
-
+  routerBasename: "/",
   showStudyList: true,
   extensions: [],
   modes: [],
@@ -10,9 +9,7 @@ window.config = {
   showLoadingIndicator: true,
   strictZSpacingForVolumeViewport: true,
   defaultDataSourceName: "dicomweb",
-  investigationalUseDialog: {
-    option: "never",
-  },
+  investigationalUseDialog: { option: "never" },
 
   dataSources: [
     {
@@ -35,21 +32,20 @@ window.config = {
       },
     },
   ],
+
   oidc: [
     {
       authority:
         "https://slate-dcm4chee.chickenkiller.com/keycloak/realms/ohif",
       client_id: "ohif_viewer",
       redirect_uri: "https://slate-dcm4chee.chickenkiller.com/callback",
-      silent_redirect_uri:
-        "https://slate-dcm4chee.chickenkiller.com/ohif-viewer/silent-refresh.html",
+      post_logout_redirect_uri: "https://slate-dcm4chee.chickenkiller.com/",
+      automaticSilentRenew: true,
+      revokeAccessTokenOnSignout: true,
       response_type: "code",
       scope: "openid profile email",
-      post_logout_redirect_uri: "https://slate-dcm4chee.chickenkiller.com/",
       revoke_uri:
         "https://slate-dcm4chee.chickenkiller.com/keycloak/realms/ohif/protocol/openid-connect/revoke",
-      automaticSilentRenew: false,
-      revokeAccessTokenOnSignout: true,
     },
   ],
 };
