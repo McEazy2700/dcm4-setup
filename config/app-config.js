@@ -18,12 +18,14 @@ window.config = {
       configuration: {
         friendlyName: "Dcm4chee Server",
         name: "Dcm4chee",
-        wadoUriRoot:
-          "https://slate-dcm4chee.chickenkiller.com/dcm4chee-arc/aets/DCM4CHEE/wado",
-        qidoRoot:
-          "https://slate-dcm4chee.chickenkiller.com/dcm4chee-arc/aets/DCM4CHEE/rs",
-        wadoRoot:
-          "https://slate-dcm4chee.chickenkiller.com/dcm4chee-arc/aets/DCM4CHEE/rs",
+        wadoUriRoot: "https://slate-dcm4chee.chickenkiller.com/pacs",
+        qidoRoot: "https://slate-dcm4chee.chickenkiller.com/pacs",
+        wadoRoot: "https://slate-dcm4chee.chickenkiller.com/pacs",
+
+        // wadoUriRoot: "http://192.168.0.253/pacs",
+        // qidoRoot: "http://192.168.0.253/pacs",
+        // wadoRoot: "http://192.168.0.253/pacs",
+
         qidoSupportsIncludeField: false,
         imageRendering: "wadors",
         thumbnailRendering: "wadors",
