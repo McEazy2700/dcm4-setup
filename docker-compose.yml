@@ -10,6 +10,7 @@ services:
     ports:
       - "389:389"
     env_file: docker-compose.env
+    restart: unless-stopped
     volumes:
       - ~/dcm4chee-arc/ldap:/var/lib/ldap
       - ~/dcm4chee-arc/slapd.d:/etc/ldap/slapd.d
@@ -23,13 +24,14 @@ services:
     ports:
       - "5432:5432"
     env_file: docker-compose.env
+    restart: unless-stopped
     volumes:
       - /etc/localtime:/etc/localtime:ro
       # - /etc/timezone:/etc/timezone:ro
       - ~/dcm4chee-arc/db:/var/lib/postgresql/data
 
   arc:
-    image: dcm4che/dcm4chee-arc-psql:5.34.1
+    image: dcm4che/dcm4chee-arc-psql:5.29.0
     logging:
       driver: json-file
       options:
@@ -54,11 +56,14 @@ services:
         condition: service_started
       keycloak:
         condition: service_healthy
+    restart: unless-stopped
     volumes:
       - /etc/localtime:/etc/localtime:ro
       # - /etc/timezone:/etc/timezone:ro
       - ~/dcm4chee-arc/wildfly:/opt/wildfly/standalone
       - ~/dcm4chee-arc/storage:/storage
+      - /mnt/dcmimages:/mnt/dcmimages
+      - /mnt/tier3:/mnt/tier3
 
   ohif_viewer:
     image: docker.io/mceazy2700/slate-ohif-webapp:latest
@@ -69,7 +74,7 @@ services:
     depends_on:
       keycloak:
         condition: service_healthy
-    restart: on-failure
+    restart: unless-stopped
     networks:
       - default
     extra_hosts:
@@ -99,8 +104,8 @@ services:
       KC_DB_SCHEMA: public
       KC_DB_USERNAME: keycloak
       KC_DB_PASSWORD: password
-      KC_HOSTNAME_ADMIN_URL: https://slate-dcm4chee.chickenkiller.com/keycloak/
-      KC_HOSTNAME_URL: https://slate-dcm4chee.chickenkiller.com/keycloak/
+      KC_HOSTNAME_ADMIN_URL: ${PUBLIC_PROTOCOL}://${PUBLIC_HOSTNAME}/keycloak/
+      KC_HOSTNAME_URL: ${PUBLIC_PROTOCOL}://${PUBLIC_HOSTNAME}/keycloak/
       KC_HOSTNAME_STRICT_BACKCHANNEL: true
       KC_HOSTNAME_STRICT_HTTPS: false
       KC_HTTP_ENABLED: true
@@ -151,6 +156,7 @@ services:
   certbot:
     image: certbot/certbot
     container_name: certbot
+    restart: unless-stopped
     volumes:
       - ./config/letsencrypt:/etc/letsencrypt
       - ./config/certbot:/var/www/certbot
