@@ -71,9 +71,14 @@ services:
     ports:
       - "443:443" # SSL
       - "80:80" # Web
+    dns:
+      - 127.0.0.11
+      - 8.8.8.8
     depends_on:
       keycloak:
         condition: service_healthy
+      arc:
+        condition: service_started
     restart: unless-stopped
     networks:
       - default
