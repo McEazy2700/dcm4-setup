@@ -69,16 +69,15 @@ services:
     image: docker.io/mceazy2700/slate-ohif-webapp:latest
     container_name: webapp
     ports:
-      - "443:443" # SSL
-      - "80:80" # Web
-    dns:
-      - 127.0.0.11
-      - 8.8.8.8
+      - "${WEBAPP_PORT:-80}:80"
     depends_on:
       keycloak:
         condition: service_healthy
       arc:
         condition: service_started
+    links:
+      - keycloak
+      - arc
     restart: unless-stopped
     networks:
       - default
