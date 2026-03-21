@@ -49,6 +49,7 @@ services:
     environment:
       WILDFLY_CHOWN: /opt/wildfly/standalone /storage
       WILDFLY_WAIT_FOR: ldap:389 db:5432
+      EXTRA_JAVA_OPTS: "-XX:-UseContainerSupport"
     depends_on:
       ldap:
         condition: service_started
