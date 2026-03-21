@@ -49,7 +49,7 @@ services:
     environment:
       WILDFLY_CHOWN: /opt/wildfly/standalone /storage
       WILDFLY_WAIT_FOR: ldap:389 db:5432
-      EXTRA_JAVA_OPTS: "-XX:-UseContainerSupport"
+      JAVA_OPTS: "-Xms64m -Xmx512m -XX:MetaspaceSize=96M -XX:MaxMetaspaceSize=256m -Djava.net.preferIPv4Stack=true -Djboss.modules.system.pkgs=org.jboss.byteman -Djava.awt.headless=true -XX:-UseContainerSupport"
     depends_on:
       ldap:
         condition: service_started
