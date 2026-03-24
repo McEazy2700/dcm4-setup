@@ -1,21 +1,25 @@
 /* --- Variables --- */
 :root {
-	--nisa-dark-blue: #1a4d7a;
-	--nisa-medium-blue: #4a90c8;
-	--nisa-light-blue: #7bbfde;
-	--nisa-sky-blue: #a8d5e8;
+	/* NNPC Ltd Brand Colors (Green, Red, Yellow, Grey) */
+	--custom-dark-green: #0b5e36;
+	--custom-primary-green: #149b5f;
+	--custom-accent-red: #e32636;
+	--custom-accent-yellow: #ffc000;
+	--custom-text-grey: #4a4a4a;
+
 	--glass-bg: rgba(255, 255, 255, 0.95);
-	--glass-border: rgba(255, 255, 255, 0.4);
-	--shadow-color: rgba(26, 77, 122, 0.2);
+	--glass-border: rgba(255, 255, 255, 0.5);
+	--shadow-color: rgba(11, 94, 54, 0.25); /* Tinted with dark green */
 }
 
 /* --- Main Background --- */
 body {
+	/* Elegant corporate gradient inspired by NNPC's green with depth */
 	background: linear-gradient(
 		135deg,
-		#7bbfde 0%,
-		#4a90c8 50%,
-		#1a4d7a 100%
+		var(--custom-primary-green) 0%,
+		var(--custom-dark-green) 70%,
+		#063b21 100%
 	) !important;
 	font-family: "Segoe UI", Roboto, Helvetica, Arial, sans-serif !important;
 	min-height: 100vh;
@@ -35,8 +39,8 @@ body::before {
 	bottom: 0;
 	background: radial-gradient(
 		circle at 50% 50%,
-		rgba(255, 255, 255, 0.1) 0%,
-		transparent 60%
+		rgba(255, 192, 0, 0.05) 0%,
+		/* Very subtle yellow glow from the logo's bottom diamond */ transparent 60%
 	);
 	pointer-events: none;
 	z-index: 0;
@@ -47,7 +51,8 @@ body::before {
 .login-pf-page .card-pf {
 	background: var(--glass-bg) !important;
 	border: 1px solid var(--glass-border) !important;
-	box-shadow: 0 8px 32px 0 var(--shadow-color) !important;
+	border-top: 4px solid var(--custom-primary-green) !important; /* Sharp top accent line */
+	box-shadow: 0 12px 40px 0 var(--shadow-color) !important;
 	backdrop-filter: blur(12px);
 	-webkit-backdrop-filter: blur(12px);
 	border-radius: 16px !important;
@@ -66,12 +71,7 @@ body::before {
 }
 
 #kc-header-wrapper {
-	font-size: 24px;
-	font-weight: bold;
-	color: white;
-	text-transform: uppercase;
-	letter-spacing: 2px;
-	text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+	display: none; /* Hidden entirely to let the image logo shine */
 }
 
 /* --- Logo Setup --- */
@@ -79,10 +79,10 @@ body::before {
 .card-pf::before {
 	content: "";
 	display: block;
-	width: 180px;
-	height: 60px;
-	margin: 0 auto 20px auto;
-	background-image: url("../img/logo.png"); /* Ensure this file exists! */
+	width: 200px; /* Slightly wider to accommodate NNPC text alongside the diamonds */
+	height: 70px;
+	margin: 0 auto 25px auto;
+	background-image: url("../img/logo.png"); /* Ensure the new NNPC Ltd logo is here! */
 	background-size: contain;
 	background-repeat: no-repeat;
 	background-position: center;
@@ -93,15 +93,15 @@ body::before {
 /* Page Title (e.g., "Sign in to your account") */
 #kc-page-title {
 	text-align: center;
-	color: var(--nisa-dark-blue);
-	font-size: 1.5rem;
+	color: var(--custom-text-grey);
+	font-size: 1.4rem;
 	font-weight: 600;
 	margin-bottom: 30px;
 }
 
 /* Labels */
 .pf-c-form__label-text {
-	color: var(--nisa-dark-blue) !important;
+	color: var(--custom-dark-green) !important;
 	font-weight: 600 !important;
 }
 
@@ -116,22 +116,23 @@ input.pf-c-form-control,
 	font-size: 15px;
 	line-height: 1.5;
 	color: #333;
-	background-color: #fff;
+	background-color: #f9f9f9;
 	background-clip: padding-box;
 	border: 2px solid #e0e0e0 !important;
 	border-radius: 8px !important;
 	transition:
 		border-color 0.3s ease,
 		box-shadow 0.3s ease;
-	box-sizing: border-box; /* Crucial for width: 100% */
+	box-sizing: border-box;
 }
 
 input.pf-c-form-control:focus,
 #username:focus,
 #password:focus {
-	border-color: var(--nisa-medium-blue) !important;
+	background-color: #fff;
+	border-color: var(--custom-primary-green) !important;
 	outline: 0;
-	box-shadow: 0 0 0 4px rgba(74, 144, 200, 0.15) !important;
+	box-shadow: 0 0 0 4px rgba(20, 155, 95, 0.15) !important;
 }
 
 /* --- Buttons --- */
@@ -139,8 +140,8 @@ input.pf-c-form-control:focus,
 button.pf-c-button.pf-m-primary {
 	background: linear-gradient(
 		135deg,
-		var(--nisa-medium-blue) 0%,
-		var(--nisa-dark-blue) 100%
+		var(--custom-primary-green) 0%,
+		var(--custom-dark-green) 100%
 	) !important;
 	border: none !important;
 	color: white !important;
@@ -161,7 +162,7 @@ button.pf-c-button.pf-m-primary {
 #kc-login:hover,
 button.pf-c-button.pf-m-primary:hover {
 	transform: translateY(-2px);
-	box-shadow: 0 6px 15px rgba(26, 77, 122, 0.3);
+	box-shadow: 0 6px 15px var(--shadow-color);
 }
 
 #kc-login:active {
@@ -171,34 +172,34 @@ button.pf-c-button.pf-m-primary:hover {
 /* --- Links (Forgot Password, etc) --- */
 a,
 #kc-registration a {
-	color: var(--nisa-medium-blue) !important;
+	color: var(--custom-primary-green) !important;
 	text-decoration: none;
-	font-weight: 500;
+	font-weight: 600;
 	transition: color 0.2s;
 }
 
 a:hover {
-	color: var(--nisa-dark-blue) !important;
+	color: var(--custom-dark-green) !important;
 	text-decoration: underline;
 }
 
 /* --- Alerts / Feedback --- */
 .alert-error,
 .pf-c-alert.pf-m-danger {
-	background-color: #fde8e8 !important;
-	border-left: 4px solid #f02e2e !important;
-	color: #c01d1d !important;
+	background-color: #fdf3f3 !important;
+	border-left: 4px solid var(--custom-accent-red) !important;
+	color: var(--custom-accent-red) !important;
 	border-radius: 6px;
-	padding: 10px;
-	margin-bottom: 15px;
+	padding: 12px;
+	margin-bottom: 20px;
+	font-weight: 500;
 }
 
 .pf-c-alert__icon {
-	color: #c01d1d !important;
+	color: var(--custom-accent-red) !important;
 }
 
 /* --- Footer cleanup --- */
-/* Hides standard Keycloak footer fluff if desired */
 footer {
 	display: none;
 }

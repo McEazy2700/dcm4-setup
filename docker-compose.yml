@@ -99,7 +99,7 @@ services:
     container_name: keycloak
     volumes:
       - ./config/ohif-keycloak-realm.json:/opt/keycloak/data/import/ohif-keycloak-realm.json
-      - ./config/nisa-theme:/opt/keycloak/themes/nisa-theme
+      - ./config/custom-theme:/opt/keycloak/themes/custom-theme
     environment:
       KC_DB_URL_HOST: postgres
       KC_DB: postgres
