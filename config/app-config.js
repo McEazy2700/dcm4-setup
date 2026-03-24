@@ -18,9 +18,9 @@ window.config = {
       configuration: {
         friendlyName: "Dcm4chee Server",
         name: "Dcm4chee",
-        wadoUriRoot: "https://slate-dcm4chee.chickenkiller.com/pacs",
-        qidoRoot: "https://slate-dcm4chee.chickenkiller.com/pacs",
-        wadoRoot: "https://slate-dcm4chee.chickenkiller.com/pacs",
+        wadoUriRoot: "/pacs",
+        qidoRoot: "/pacs",
+        wadoRoot: "/pacs",
 
         // wadoUriRoot: "http://192.168.0.253/pacs",
         // qidoRoot: "http://192.168.0.253/pacs",
