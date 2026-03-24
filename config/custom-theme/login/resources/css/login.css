@@ -9,12 +9,11 @@
 
 	--glass-bg: rgba(255, 255, 255, 0.95);
 	--glass-border: rgba(255, 255, 255, 0.5);
-	--shadow-color: rgba(11, 94, 54, 0.25); /* Tinted with dark green */
+	--shadow-color: rgba(11, 94, 54, 0.25);
 }
 
 /* --- Main Background --- */
 body {
-	/* Elegant corporate gradient inspired by NNPC's green with depth */
 	background: linear-gradient(
 		135deg,
 		var(--custom-primary-green) 0%,
@@ -40,22 +39,21 @@ body::before {
 	background: radial-gradient(
 		circle at 50% 50%,
 		rgba(255, 192, 0, 0.05) 0%,
-		/* Very subtle yellow glow from the logo's bottom diamond */ transparent 60%
+		transparent 60%
 	);
 	pointer-events: none;
 	z-index: 0;
 }
 
 /* --- Container / Card --- */
-/* This targets the main wrapper of the login box */
 .login-pf-page .card-pf {
 	background: var(--glass-bg) !important;
 	border: 1px solid var(--glass-border) !important;
-	border-top: 4px solid var(--custom-primary-green) !important; /* Sharp top accent line */
-	box-shadow: 0 12px 40px 0 var(--shadow-color) !important;
+	border-top: 6px solid var(--custom-primary-green) !important; /* Thick, sharp top accent */
+	box-shadow: 0 10px 30px 0 var(--shadow-color) !important;
 	backdrop-filter: blur(12px);
 	-webkit-backdrop-filter: blur(12px);
-	border-radius: 16px !important;
+	border-radius: 0 !important; /* 🟥 BOXY LOOK: Removed rounded corners */
 	padding: 40px !important;
 	max-width: 450px !important;
 	width: 100%;
@@ -64,45 +62,46 @@ body::before {
 	z-index: 1;
 }
 
-/* Hide the default header text if we are using a logo */
 #kc-header {
 	margin-bottom: 20px;
 	text-align: center;
 }
 
 #kc-header-wrapper {
-	display: none; /* Hidden entirely to let the image logo shine */
+	display: none;
 }
 
 /* --- Logo Setup --- */
-/* This inserts the logo above the form */
 .card-pf::before {
 	content: "";
 	display: block;
-	width: 200px; /* Slightly wider to accommodate NNPC text alongside the diamonds */
+	width: 200px;
 	height: 70px;
 	margin: 0 auto 25px auto;
-	background-image: url("../img/logo.png"); /* Ensure the new NNPC Ltd logo is here! */
+	background-image: url("../img/logo.png");
 	background-size: contain;
 	background-repeat: no-repeat;
 	background-position: center;
 }
 
 /* --- Form Elements --- */
-
-/* Page Title (e.g., "Sign in to your account") */
 #kc-page-title {
 	text-align: center;
 	color: var(--custom-text-grey);
-	font-size: 1.4rem;
+	font-size: 1.3rem;
 	font-weight: 600;
 	margin-bottom: 30px;
+	text-transform: uppercase; /* 🟥 Added uppercase for structured look */
+	letter-spacing: 1px;
 }
 
 /* Labels */
 .pf-c-form__label-text {
 	color: var(--custom-dark-green) !important;
-	font-weight: 600 !important;
+	font-weight: 700 !important;
+	text-transform: uppercase;
+	font-size: 0.85rem;
+	letter-spacing: 0.5px;
 }
 
 /* Inputs */
@@ -119,10 +118,8 @@ input.pf-c-form-control,
 	background-color: #f9f9f9;
 	background-clip: padding-box;
 	border: 2px solid #e0e0e0 !important;
-	border-radius: 8px !important;
-	transition:
-		border-color 0.3s ease,
-		box-shadow 0.3s ease;
+	border-radius: 0 !important; /* 🟥 BOXY LOOK */
+	transition: all 0.2s ease;
 	box-sizing: border-box;
 }
 
@@ -132,7 +129,8 @@ input.pf-c-form-control:focus,
 	background-color: #fff;
 	border-color: var(--custom-primary-green) !important;
 	outline: 0;
-	box-shadow: 0 0 0 4px rgba(20, 155, 95, 0.15) !important;
+	/* 🟥 Sharp, offset shadow instead of soft blur */
+	box-shadow: 4px 4px 0px rgba(20, 155, 95, 0.15) !important;
 }
 
 /* --- Buttons --- */
@@ -145,28 +143,27 @@ button.pf-c-button.pf-m-primary {
 	) !important;
 	border: none !important;
 	color: white !important;
-	padding: 12px 24px;
+	padding: 14px 24px;
 	font-size: 16px;
 	font-weight: 600;
-	border-radius: 8px !important;
+	border-radius: 0 !important; /* 🟥 BOXY LOOK */
 	width: 100%;
 	margin-top: 20px;
 	cursor: pointer;
-	transition:
-		transform 0.2s,
-		box-shadow 0.2s;
+	transition: all 0.15s ease;
 	text-transform: uppercase;
-	letter-spacing: 0.5px;
+	letter-spacing: 1px;
 }
 
 #kc-login:hover,
 button.pf-c-button.pf-m-primary:hover {
-	transform: translateY(-2px);
-	box-shadow: 0 6px 15px var(--shadow-color);
+	transform: translate(-3px, -3px); /* 🟥 Moves button up and left */
+	box-shadow: 6px 6px 0px rgba(11, 94, 54, 0.4) !important; /* 🟥 Hard block shadow */
 }
 
 #kc-login:active {
-	transform: translateY(0);
+	transform: translate(0, 0);
+	box-shadow: none !important;
 }
 
 /* --- Links (Forgot Password, etc) --- */
@@ -187,9 +184,10 @@ a:hover {
 .alert-error,
 .pf-c-alert.pf-m-danger {
 	background-color: #fdf3f3 !important;
-	border-left: 4px solid var(--custom-accent-red) !important;
+	border: 1px solid var(--custom-accent-red) !important;
+	border-left: 6px solid var(--custom-accent-red) !important;
 	color: var(--custom-accent-red) !important;
-	border-radius: 6px;
+	border-radius: 0 !important; /* 🟥 BOXY LOOK */
 	padding: 12px;
 	margin-bottom: 20px;
 	font-weight: 500;
