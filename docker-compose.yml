@@ -76,6 +76,7 @@ services:
         condition: service_healthy
       arc:
         condition: service_started
+    entrypoint: /bin/sh -c "sleep 60 && /entrypoint.sh"
     links:
       - keycloak
       - arc
