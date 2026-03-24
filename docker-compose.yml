@@ -71,7 +71,6 @@ services:
     container_name: webapp
     ports:
       - "${WEBAPP_PORT:-80}:80"
-      - "443:443"
     depends_on:
       keycloak:
         condition: service_healthy
