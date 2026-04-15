@@ -14,7 +14,7 @@ The architecture is built on Docker and consists of the following primary compon
 - **Keycloak:** Identity and Access Management (IAM).
   - Handles user authentication for both the OHIF Viewer and the DCM4CHEE administration console.
   - Includes a custom theme (`config/custom-theme`) and pre-configured realm (`config/ohif-keycloak-realm.json`).
-- **Disk Monitor:** A small Node.js microservice located in `./disk-monitor/` that provides a web interface (defaulting to port 3000, configurable via `DISK_MONITOR_PORT`) for monitoring host disk usage.
+- **Disk Monitor:** A Node.js microservice located in `./disk-monitor/` integrated into the main stack, providing an OIDC-secured web interface at `/disk-usage/` for monitoring host disk usage. Configurable via `DISK_MONITOR_PORT` (default 3000).
 
 ## Architecture & Routing
 
