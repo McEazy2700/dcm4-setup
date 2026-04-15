@@ -162,6 +162,20 @@ services:
     networks:
       - default
 
+  disk-monitor:
+    build:
+      context: ./disk-monitor
+    container_name: disk_monitor
+    restart: unless-stopped
+    ports:
+      - "${DISK_MONITOR_PORT:-3000}:${DISK_MONITOR_PORT:-3000}"
+    environment:
+      - DISK_MONITOR_PORT=${DISK_MONITOR_PORT:-3000}
+    volumes:
+      - /:/mnt/host:ro
+    networks:
+      - default
+
 volumes:
   postgres_data:
     driver: local

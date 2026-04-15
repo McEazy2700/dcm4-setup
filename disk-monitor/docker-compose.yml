@@ -1,0 +1,13 @@
+version: "3.8"
+
+services:
+  disk-monitor:
+    build: .
+    container_name: disk_monitor
+    restart: unless-stopped
+    ports:
+      - "${DISK_MONITOR_PORT:-3000}:${DISK_MONITOR_PORT:-3000}"
+    environment:
+      - DISK_MONITOR_PORT=${DISK_MONITOR_PORT:-3000}
+    volumes:
+      - /:/mnt/host:ro
